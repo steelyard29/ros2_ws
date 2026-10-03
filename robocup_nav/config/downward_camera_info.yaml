@@ -1,0 +1,22 @@
+# Chessboard calibration; camera identity confirmed by operator 2026-09-29.
+# Use only with matching 1280x720 capture; not a flight approval.
+image_width: 1280
+image_height: 720
+camera_name: uav_v4l2_camera
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [775.6157006120851, 0.0, 605.3276038392911, 0.0, 777.3126752216206, 483.81674884108116, 0.0, 0.0, 1.0]
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [0.01990808352923048, -0.03730555061027225, 0.0018027788813624718, -0.010625098421622292, 0.05734081368562428]
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [775.6157006120851, 0.0, 605.3276038392911, 0.0, 0.0, 777.3126752216206, 483.81674884108116, 0.0, 0.0, 0.0, 1.0, 0.0]

@@ -1,0 +1,18 @@
+[Unit]
+Description=RoboCup ground-start resident external vision only (no flight commands)
+Requires=robocup-sensors-boot.service robocup-dds-boot.service
+After=robocup-sensors-boot.service robocup-dds-boot.service time-sync.target
+ConditionPathExists=/home/cfly/ros2_ws/robocup_nav/scripts/boot_resident_ev.sh
+
+[Service]
+Type=simple
+User=cfly
+WorkingDirectory=/home/cfly/ros2_ws/robocup_nav
+ExecStart=/bin/bash /home/cfly/ros2_ws/robocup_nav/scripts/boot_resident_ev.sh
+KillMode=mixed
+KillSignal=SIGTERM
+TimeoutStopSec=6
+Restart=no
+
+[Install]
+WantedBy=multi-user.target

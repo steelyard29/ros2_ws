@@ -1,0 +1,23 @@
+# UAV TUI Dashboard logging configuration example (TOML)
+#
+# 将本示例复制到本地路径，并通过 `--log-config /path/to/file.toml`
+# 或环境变量 `UAV_TUI_LOG_CONFIG` 进行加载。
+
+level = "INFO"
+console = true
+format = "%(asctime)s %(levelname)s [%(name)s] %(message)s"
+datefmt = "%Y-%m-%d %H:%M:%S"
+
+# 可选：显式指定日志目录，默认使用平台推荐的应用日志目录。
+# directory = "~/logs/uav-dashboard"
+
+[handlers.runtime]
+filename = "uav-dashboard-runtime.log"
+level = "DEBUG"
+max_bytes = 1048576
+backup_count = 3
+
+[handlers.errors]
+filename = "uav-dashboard-error.log"
+level = "ERROR"
+backup_count = 10

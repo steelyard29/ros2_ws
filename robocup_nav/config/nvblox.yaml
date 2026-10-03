@@ -1,0 +1,42 @@
+nvblox_node:
+  ros__parameters:
+    global_frame: odom
+    pose_frame: base_link
+    use_tf_transforms: true
+    voxel_size: 0.05
+    num_cameras: 1
+    mapping_type: static_tsdf
+    use_depth: true
+    use_color: false
+    use_lidar: false
+    input_qos: SENSOR_DATA
+    esdf_mode: 2d
+    publish_esdf_distance_slice: true
+    integrate_depth_rate_hz: 10.0
+    integrate_color_rate_hz: 0.0
+    integrate_lidar_rate_hz: 0.0
+    update_mesh_rate_hz: 0.0
+    update_esdf_rate_hz: 5.0
+    publish_layer_rate_hz: 0.0
+    publish_debug_vis_rate_hz: 0.0
+    decay_tsdf_rate_hz: 0.0
+    # Keep the session's observed global map inside a bounded 30 m square.
+    map_clearing_radius_m: -1.0
+    maximum_input_queue_length: 5
+    static_mapper:
+      projective_integrator_max_integration_distance_m: 4.0
+      projective_integrator_max_weight: 5.0
+      raycast_subsampling_factor: 4
+      workspace_bounds_type: bounding_box
+      workspace_bounds_min_corner_x_m: -15.0
+      workspace_bounds_max_corner_x_m: 15.0
+      workspace_bounds_min_corner_y_m: -15.0
+      workspace_bounds_max_corner_y_m: 15.0
+      workspace_bounds_min_height_m: -2.0
+      workspace_bounds_max_height_m: 5.0
+      esdf_integrator_max_distance_m: 2.0
+      esdf_slice_height: 0.0
+      # Conservative SHADOW band around odom z=0. Launch offsets it by center_z.
+      # Does not establish the actual flight/ground height or payload envelope.
+      esdf_slice_min_height: -0.4
+      esdf_slice_max_height: 0.4

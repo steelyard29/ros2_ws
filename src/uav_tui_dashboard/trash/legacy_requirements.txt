@@ -1,0 +1,14 @@
+# Pinned runtime dependencies for UAV TUI Dashboard
+textual==6.1.0
+rich==14.1.0
+markdown-it-py==4.0.0
+mdit-py-plugins==0.5.0
+mdurl==0.1.2
+linkify-it-py==2.0.3
+platformdirs==4.4.0
+Pygments==2.19.2
+typing_extensions==4.15.0
+tomli==2.0.1
+
+# Optional ROS2 runtime dependency (install via ROS 2 distribution when running in ROS mode)
+rclpy>=1.0.0

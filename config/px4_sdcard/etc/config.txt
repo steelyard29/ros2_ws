@@ -1,0 +1,57 @@
+# ═══════════════════════════════════════════════════════════
+# PX4 SD Card 参数覆盖文件
+# 将此文件复制到 PX4 SD 卡的 /etc/config.txt
+# 上电后自动应用，覆盖已有参数
+#
+# 与飞控 SD 卡实际参数保持完全一致 (canonical reference)
+# ═══════════════════════════════════════════════════════════
+
+# ── 禁用所有 MAVLink 实例 ──
+param set MAV_0_CONFIG 0
+param set MAV_1_CONFIG 0
+param set MAV_2_CONFIG 0
+
+# ── 启用 uXRCE-DDS on TELEM1 ──
+param set UXRCE_DDS_CFG 101
+param set SER_TEL1_BAUD 921600
+
+# ── USB: 启用 MAVLink ──
+param set SYS_USB_AUTO 2
+
+# ── EKF2 室内激光定高 + 视觉全自由度融合 ──
+# EKF2_EV_CTRL: 15 = HPOS(1) + VPOS(2) + VEL(4) + YAW(8)
+param set EKF2_EV_CTRL 15
+param set EKF2_EV_QMIN 50
+param set EKF2_EV_DELAY 0
+param set EKF2_EV_POS_X 0
+param set EKF2_EV_POS_Y 0
+param set EKF2_EV_POS_Z 0
+param set EKF2_EVA_NOISE 0.25
+param set EKF2_EVP_NOISE 0.20
+param set EKF2_EVV_NOISE 0.15
+
+# ── TFmini 激光定高 ──
+param set SENS_TFMINI_CFG 102
+param set SENS_TFMINI_HW 1
+param set EKF2_HGT_REF 2
+param set EKF2_RNG_CTRL 2
+param set EKF2_RNG_POS_Z 0.05
+param set EKF2_RNG_NOISE 0.15
+param set EKF2_RNG_GATE 6.0
+param set EKF2_RNG_K_GATE 3.0
+
+# ── 室内: 关气压计 / 磁力计 / GPS / 光流 ──
+param set EKF2_BARO_CTRL 0
+param set EKF2_MAG_TYPE 5
+param set EKF2_GPS_CTRL 0
+param set EKF2_OF_CTRL 0
+
+# ── 高度控制模式: 测距仪 ──
+param set MPC_ALT_MODE 2
+
+# ── 解锁条件 ──
+param set COM_ARM_WO_GPS 1
+param set SYS_HAS_GPS 0
+param set COM_RC_IN_MODE 2
+param set CBRK_IO_SAFETY 22027
+param set COM_POWER_COUNT 1

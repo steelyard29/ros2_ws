@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>uav_task</name>
+  <version>0.0.0</version>
+  <description>Simple UAV task package for basic flight test - takeoff to 1m and land</description>
+  <maintainer email="user@example.com">UAV Task Maintainer</maintainer>
+  <license>Apache-2.0</license>
+
+  <depend>rclcpp</depend>
+  <depend>rclpy</depend>
+  <depend>px4_msgs</depend>
+  <depend>px4_interface</depend>
+  <depend>geometry_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+  <depend>ament_index_cpp</depend>
+  <depend>cv_bridge</depend>
+  <exec_depend>v4l2_camera</exec_depend>
+  <exec_depend>rplidar_ros</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+  <test_depend>ament_cmake_gtest</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

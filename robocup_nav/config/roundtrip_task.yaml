@@ -1,0 +1,51 @@
+# Deployment defaults remain NOT reviewed: software wiring is not flight evidence.
+schema: 1
+profile: roundtrip_1m_2p5m
+landing_method: h_align_then_px4_land
+landing_method_operator_confirmed: true
+bounds_odom: null
+# Boundary survey only; not odom coordinates or robot-center flight limits.
+# All four physical distances confirmed by operator. Resolve against THIS
+# session's takeoff origin/heading; never store a rotated outer odom rectangle.
+site_measurement:
+  reference: takeoff_px4_center_with_takeoff_heading
+  distances_to_physical_boundary_m:
+    forward: 6.20
+    backward: 1.80
+    left: 2.50
+    right: 2.50
+  source: operator_20261001
+  resolution: runtime_takeoff_rectangle_with_body_and_uncertainty_inset
+alignment_reviewed: true
+full_height_slice_reviewed: true
+takeoff_column_reviewed: true
+landing_column_reviewed: true
+landing_error_budget_m: 0.049
+# Operator-confirmed dimensions; neither nominal clearance nor local checker
+# agreement is the total uncertainty during alignment + PX4 descent.
+landing_geometry:
+  ring_inner_diameter_m: 0.60
+  motor_diagonal_m: 0.40
+  motor_circle_center_matches_px4: true
+  source: config/landing_candidate.yaml
+# Commissioning MODEL, not measured braking. Task release additionally requires
+# operator-reviewed braking/coverage/handoff evidence bound by hashes.
+stopping:
+  body_radius: 0.43
+  uncertainty: 0.05
+  latency: 0.30
+  braking: 0.20
+camera:
+  frame_id: downward_optical_unverified
+  image_size: [1280, 720]
+  k: [[775.6157006120851, 0.0, 605.3276038392911], [0.0, 777.3126752216206, 483.81674884108116], [0.0, 0.0, 1.0]]
+  distortion: [0.01990808352923048, -0.03730555061027225, 0.0018027788813624718, -0.010625098421622292, 0.05734081368562428]
+  calibration_use_authorized: true
+  offset_flu_m: [0.12, 0.0, -0.055]
+  offset_source: operator_confirmed_20260930_lowest_lens_point
+  # Nominal zero-tilt orientation consistent with signed ground displacement.
+  # NOT a surveyed tilt or a flight-height error bound; axes gate stays false.
+  axes_reviewed: true
+  body_from_optical: [[0, -1, 0], [-1, 0, 0], [0, 0, -1]]
+  rotation_status: nominal_signed_axes_only_not_flight_reviewed
+  direction_evidence: evidence/board_endpoint_20260930_210050/report.json

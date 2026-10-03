@@ -1,0 +1,25 @@
+# Isolated comparison only. Original waypoint_test_config.yaml is untouched.
+# Same legacy PID/APF values except waypoint position_tolerance .15 -> .05 m.
+# New adapter caps final XY norm at .15 m/s, holds heading and cruise altitude.
+position_controller:
+  kp_x: 0.7
+  kp_y: 0.7
+  kp_z: 0.5
+  kd_x: 0.2
+  kd_y: 0.2
+  kd_z: 0.04
+  ki_x: 0.0
+  ki_y: 0.0
+  ki_z: 0.0
+  max_velocity_xy: 0.4
+  max_velocity_z: 0.5
+  derivative_filter_alpha: 0.8
+  position_tolerance: 0.05
+obstacle_avoidance:
+  laser_topic: /robocup/legacy_apf/scan
+  obstacle_distance_threshold: 0.9
+  avoidance_fov_degrees: 360.0
+  avoidance_strength_gain: 0.8
+  max_avoidance_velocity: 0.5
+  scan_timeout_ms: 300
+  min_valid_ranges_ratio: 0.6

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Opt-in camera/VIO candidate; not a global DDS or PX4 configuration. -->
+<dds xmlns="http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles">
+  <profiles>
+    <transport_descriptors>
+      <transport_descriptor>
+        <transport_id>experiment_shm</transport_id>
+        <type>SHM</type>
+        <segment_size>16777216</segment_size>
+      </transport_descriptor>
+      <transport_descriptor>
+        <transport_id>experiment_udp</transport_id>
+        <type>UDPv4</type>
+      </transport_descriptor>
+    </transport_descriptors>
+    <participant profile_name="experiment_only" is_default_profile="true">
+      <rtps>
+        <useBuiltinTransports>false</useBuiltinTransports>
+        <userTransports>
+          <transport_id>experiment_udp</transport_id>
+          <transport_id>experiment_shm</transport_id>
+        </userTransports>
+      </rtps>
+    </participant>
+  </profiles>
+</dds>

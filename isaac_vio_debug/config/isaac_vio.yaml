@@ -1,0 +1,33 @@
+/**:
+  ros__parameters:
+    num_cameras: 2
+    enable_image_denoising: false
+    rectified_images: true
+    enable_imu_fusion: true
+
+    # Values from NVIDIA's installed D435i example. These are initial SDK
+    # noise settings, not a claim that this unit's IMU is calibrated.
+    gyro_noise_density: 0.000244
+    gyro_random_walk: 0.000019393
+    accel_noise_density: 0.001862
+    accel_random_walk: 0.003
+    calibration_frequency: 200.0
+
+    # 30 Hz nominal period is 33.33 ms. 40 ms allows 6.67 ms scheduling
+    # margin while still warning on a missed frame (~66.67 ms).
+    image_jitter_threshold_ms: 40.0
+    imu_jitter_threshold_ms: 10.0
+
+    base_frame: camera_link
+    imu_frame: camera_imu_optical_frame
+    camera_optical_frames:
+      - camera_infra1_optical_frame
+      - camera_infra2_optical_frame
+
+    publish_map_to_odom_tf: true
+    publish_odom_to_base_tf: true
+    enable_slam_visualization: false
+    enable_landmarks_view: false
+    enable_observations_view: false
+    verbosity: 1
+

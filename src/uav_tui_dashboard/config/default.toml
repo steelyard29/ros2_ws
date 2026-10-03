@@ -1,0 +1,39 @@
+# UAV TUI Dashboard Configuration File
+# This file contains default configuration values for the UAV TUI Dashboard.
+# Values can be overridden by command-line arguments.
+
+[general]
+# Data source mode: "sim" for simulator, "ros2" for ROS2 topics
+mode = "ros2"
+# Polling interval in seconds for fetching telemetry data
+poll_interval = 0.5
+
+[logging]
+# Python logging level (e.g., INFO, DEBUG)
+level = "DEBUG"
+# Directory for log files (empty string for system default)
+dir = ""
+# Path to logging configuration file (TOML/JSON, empty string to use defaults)
+config = ""
+# Disable console logging (only write to files)
+no_console = false
+
+[ros2]
+# ROS2 namespace (empty string for global)
+namespace = ""
+# Odometry topic for position and attitude
+odometry_topic = "/uav/odometry"
+# Battery topic (empty string to disable)
+battery_topic = "/uav/battery"
+# Odometry message type
+odometry_type = "nav_msgs.msg.Odometry"
+# Battery message type
+battery_type = "sensor_msgs.msg.BatteryState"
+# Vehicle status topic (empty string to disable)
+vehicle_status_topic = ""
+# Vehicle status message type
+vehicle_status_type = "px4_interface.msg.VehicleStatus"
+# Additional arguments for rclpy.init()
+args = []
+# Predefined ROS profile (empty string for none)
+profile = "px4_interface"

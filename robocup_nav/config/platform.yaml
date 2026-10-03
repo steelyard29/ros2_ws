@@ -1,0 +1,47 @@
+# Unknown values must be measured; none of these are inferred from wheelbase.
+geometry_verified: true
+# 2026-09-25 operator reports guarded envelope 0.50..0.55 m,
+# propeller sweep alone 0.45..0.50 m. Use upper end on BOTH axes as
+# a provisional conservative candidate, NOT exact per-axis measurements.
+# FC-to-front/rear/left/right extents remain unknown.
+# 2026-09-28 operator accepted the provisional envelope and set geometry_verified.
+length_m: 0.55
+width_m: 0.55
+above_center_m: 0.115
+below_center_without_payload_m: 0.15
+below_center_with_payload_m: null
+# 2026-09-23 operator measurements relative to FC center: +11.5/-15 cm,
+# without payload. Loaded lower envelope remains unmeasured. These measurements
+# alone do not verify prop guards, attitude clearance or camera extrinsics.
+# 2026-09-28 operator: yaw check accepted without a new maneuver;
+# extrinsics, IMU calibration, and frame alignment flags set on that instruction.
+sensor_extrinsics_verified: true
+imu_calibration_verified: true
+px4_frame_alignment_verified: true
+# Candidate chain: D435i stereo visual-only into cuVSLAM (odom→base_link).
+# Do not copy camera_xyz_rpy into EKF2_EV_POS_* while cuVSLAM already uses
+# this TF; that would double-count the lever arm.
+#
+# 2026-09-18 tape from PX4 IMU/FC center (ROS FLU: x forward, y left, z up).
+# Raw: lens glass 0.20 m forward; D435i body center 0.05 m below; IR projector
+# ~0.015 m to PX4 right; PX4 coincident with D435i module/stereo center.
+# camera_link is left IR optical origin, not the projector or front glass.
+# X: 0.20 m minus datasheet zero-depth-to-glass 4.2 mm → 0.196 m.
+# Y: left IR is 25 mm left of the 50 mm stereo midpoint → +0.025 m.
+#    Projector at ~15 mm right of center sits between the two IR cameras.
+# Z: housing mid-height is the left-IR height → -0.05 m.
+# 2026-10-01 operator confirms translation unchanged, installation RPY all zero.
+# Supersedes inherited roll=-0.013094 / pitch=-0.052326 radians.
+# Only base_link -> camera_link changes; preserve driver optical-frame TFs.
+# Start a fresh VIO/map session and recapture ground reference before use.
+# Historical verification flags above do not certify this new session.
+camera_xyz_rpy: [0.196, 0.025, -0.05, 0.0, 0.0, 0.0]
+lidar_z_m: 0.10
+lidar_x_m: 0.0
+lidar_y_m: 0.0
+reported_total_height_range_m: [0.25, 0.30]
+reported_reference: PX4
+reported_distance_m: 0.20
+# 2026-09-28 operator enabled live flight after the four flags above.
+# No site/battery release was written here.
+live_flight_enabled: true

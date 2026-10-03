@@ -1,0 +1,67 @@
+[
+  {
+    "path": ".",
+    "commit": "67cf0fa7fba4ac302a842446f0639790caac1be5",
+    "origin": "https://github.com/xmu795/ros2_ws.git"
+  },
+  {
+    "path": "robocup_nav/vendor/isaac_ros_nvblox",
+    "commit": "7908a183acf84f4f1ab3fda7b6d6caf3eefc1f78",
+    "origin": "https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_nvblox.git"
+  },
+  {
+    "path": "src/realsense-ros",
+    "commit": "6d87b071dcfef15f2a0407e1e78945256add70d0",
+    "origin": "https://github.com/realsenseai/realsense-ros.git"
+  },
+  {
+    "path": "src/third_party/px4_ros_com",
+    "commit": "86e9aeb20e55a4673fa8a9f1c29ea06a6c5ad1af",
+    "origin": "https://github.com/PX4/px4_ros_com.git"
+  },
+  {
+    "path": "src/third_party/px4_msgs",
+    "commit": "392e831c1f659429ca83902e66820d7094591410",
+    "origin": "https://github.com/PX4/px4_msgs.git"
+  },
+  {
+    "path": "src/third_party/PX4-Autopilot",
+    "commit": "5368e5f1fd5e89fc42d50bf23acf7396a434dc89",
+    "origin": "https://github.com/PX4/PX4-Autopilot.git"
+  },
+  {
+    "path": "src/third_party/PX4-Autopilot/src/lib/events/libevents",
+    "commit": "9ef591c447fe0386d698bf6fb9a6d27e43988ee4",
+    "origin": "https://github.com/mavlink/libevents.git"
+  },
+  {
+    "path": "src/third_party/PX4-Autopilot/src/lib/heatshrink/heatshrink",
+    "commit": "052e6de72f67f1777198bce98f3de62f7f3c16a0",
+    "origin": "https://github.com/PX4/heatshrink.git"
+  },
+  {
+    "path": "src/third_party/PX4-Autopilot/test/fuzztest",
+    "commit": "1e47f9d7437de5c3ee4cb0ac860d5ec875478059",
+    "origin": "https://github.com/google/fuzztest.git"
+  },
+  {
+    "path": "src/third_party/rplidar_ros",
+    "commit": "24cc9b6dea97e045bda1408eaa867ce730fd3fc3",
+    "origin": "https://github.com/Slamtec/rplidar_ros.git"
+  },
+  {
+    "path": "src/px4_interface",
+    "commit": "880957f634b2f4a0e20ce6e026d793c3ade8cfd9",
+    "origin": "https://github.com/xmu795/px4_interface.git"
+  },
+  {
+    "path": "src/uav_tui_dashboard",
+    "commit": "77de60212ad18b6c3739e3333c9d3b69ab63549d",
+    "origin": "git@github.com:xmu795/uav-tui-dashboard.git"
+  },
+  {
+    "path": "src/uav_task",
+    "commit": "cd11857b6b7cd32b09216dc56230432144de171d",
+    "origin": ""
+  }
+]

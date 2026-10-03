@@ -1,0 +1,53 @@
+# ROS2 build artifacts
+build/
+install/
+log/
+
+# Database files
+*.db
+rtabmap.db
+
+# IDE files
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Temporary files
+*.tmp
+*.bak
+
+# Python virtual environments
+venv/
+env/
+.venv/
+
+# Testing outputs
+Testing/
+# Source snapshot exclusions
+logs/
+backup/
+bags/
+evidence/
+.pytest_cache/
+.agents/
+.codex/
+*.db3
+*.db3.zstd
+*.bag
+*.ulg
+host_task_build/
+host_task_install/
+host_guard_runtime_325/
+librealsense_py_build/
+build_rsusb/
+.env
+.env.*

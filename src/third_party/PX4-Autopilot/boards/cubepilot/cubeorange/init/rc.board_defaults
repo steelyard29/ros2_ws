@@ -1,0 +1,44 @@
+#!/bin/sh
+#
+# board specific defaults
+#------------------------------------------------------------------------------
+
+param set-default BAT1_V_DIV 10.1
+param set-default BAT2_V_DIV 10.1
+
+param set-default BAT1_A_PER_V 17
+param set-default BAT2_A_PER_V 17
+
+# Disable IMU thermal control
+param set-default SENS_EN_THERMAL 0
+
+param set-default -s HEATER1_IMU_ID 2621474
+
+# ══════════════════════════════════════════════════════════════
+# ROS2 uXRCE-DDS 模式配置 (禁用 MAVLink, 启用 DDS)
+# ══════════════════════════════════════════════════════════════
+
+# ── 禁用所有 MAVLink 实例 (释放 TELEM1 给 uXRCE-DDS) ──
+param set-default MAV_0_CONFIG 0
+param set-default MAV_1_CONFIG 0
+param set-default MAV_2_CONFIG 0
+
+# ── 启用 uXRCE-DDS on TELEM1 ──
+param set-default UXRCE_DDS_CFG 101
+param set-default SER_TEL1_BAUD 921600
+
+# ── 禁用 USB MAVLink (保留 NSH shell 用于调试) ──
+param set-default SYS_USB_AUTO 0
+
+# ── EKF2 外部视觉融合 (视觉里程计) ──
+param set-default EKF2_EV_CTRL 13
+param set-default EKF2_EV_DELAY 0
+
+# ── 解锁条件: 无GPS/无遥控器场景 ──
+param set-default COM_ARM_WO_GPS 1
+param set-default SYS_HAS_GPS 0
+param set-default COM_RC_IN_MODE 2
+param set-default CBRK_IO_SAFETY 22027
+param set-default COM_POWER_COUNT 1
+
+set IOFW "/etc/extras/cubepilot_io-v2_default.bin"

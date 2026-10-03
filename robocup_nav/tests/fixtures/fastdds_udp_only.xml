@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Isolated transport comparison only; not installed on any live process. -->
+<dds xmlns="http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles">
+  <profiles>
+    <transport_descriptors>
+      <transport_descriptor>
+        <transport_id>experiment_udp</transport_id><type>UDPv4</type>
+      </transport_descriptor>
+    </transport_descriptors>
+    <participant profile_name="experiment_only" is_default_profile="true">
+      <rtps><useBuiltinTransports>false</useBuiltinTransports>
+        <userTransports><transport_id>experiment_udp</transport_id></userTransports>
+      </rtps>
+    </participant>
+  </profiles>
+</dds>

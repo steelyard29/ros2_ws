@@ -1,0 +1,118 @@
+# Candidate evidence, NOT a flight enable switch.
+camera_offset_flu_m: [0.12, 0.0, -0.055]
+ground_reference_measurement_20260930:
+  px4_center_above_ground_m: 0.14
+  vehicle_top_above_ground_m: 0.25
+  vehicle_top_above_px4_m: 0.11
+  payload_attached: false
+  source: operator_measured_and_confirmed
+  use: unloaded_ground_projection_reference_only
+  conservative_collision_envelope_unchanged: true
+offset_source: operator_20260929
+camera_vertical_measurement_confirmation_20260930:
+  px4_to_lowest_lens_point_m: 0.055
+  reference: physical_lowest_lens_point_not_surveyed_optical_projection_center
+  nominal_ground_to_lens_m: 0.085
+  single_image_ground_distance_estimate_m: null
+  absolute_discrepancy_m: null
+  single_image_estimate_status: invalidated_wrong_17mm_square_edge
+  superseded_17mm_single_image_ground_m: 0.08005661
+  superseded_17mm_discrepancy_m: 0.00494339
+  endpoint_grid_ground_distance_estimate_m: 0.083496907
+  endpoint_grid_absolute_discrepancy_m: 0.001503093
+  operator_accepts_approx_5mm_discrepancy: true
+  configured_offset_unchanged: true
+  discrepancy_is_zero_error: false
+  independent_error_bound_verified: false
+  invalidated_evidence: evidence/chessboard_plane_20260930_185523/report.json
+  evidence: evidence/board_endpoint_20260930_200950/square_size_correction_125mm.json
+optical_axes_verified: false
+forward_axis_observation: image_up_provisional
+forward_axis_evidence: downward_20260929_123344_to_123629
+lateral_axis_verified: false
+lateral_axis_observation: image_right_provisional
+lateral_axis_evidence: downward_20260929_123629_to_123956
+# Coarse signs observed; exact rotation/tilt and metric calibration NOT accepted.
+coarse_image_orientation: top_forward_right_starboard
+body_from_optical_rotation: null
+intrinsics_verified: false
+calibration_identity_confirmed_by_operator: true
+calibration_use_authorized: true
+calibration_confirmation_date: '2026-09-29'
+calibration_method: chessboard_original_not_fov_correction
+ros_camera_info_file: config/downward_camera_info.yaml
+runtime_calibration_load_verified: true
+runtime_calibration_evidence: evidence/downward_20260929_131847/report.json
+metric_accuracy_verified: false
+single_ground_translation_check_20260930:
+  evidence: evidence/board_endpoint_20260930_200950/report.json
+  operator_followup: evidence/board_endpoint_20260930_200950/operator_followup.json
+  independently_measured_forward_m: 0.036
+  model_forward_m: 0.036051225
+  operator_reported_right_m: 0.011
+  model_right_m: 0.010707611
+  operator_accepts_local_translation_check: true
+  measurement_uncertainty_m: null
+  flight_height_accuracy_verified: false
+  board_scale_discrepancy_resolved: true
+  resolved_scope: recorded_1949_to_1956_ground_board_endpoint_pair_only
+  corrected_square_m: 0.0125
+  corrected_grid_scale_evidence: evidence/board_endpoint_20260930_200950/square_size_correction_125mm.json
+  grid_scaled_forward_m: 0.035328714
+  grid_scaled_right_m: 0.010493017
+  local_translation_scale_consistent: true
+focus_unchanged_confirmed: false
+candidate_calibration_file: /home/cfly/uav_circle_distance_orin/configs/drone_calibration.json
+candidate_calibration_size: [1280, 720]
+current_preview_size: [1280, 720]
+previous_preview_size: [640, 480]
+configured_pixel_format: YUYV
+configured_fps: 10
+h_preview_transport: compressed
+h_preview_transport_evidence:
+  - evidence/sensor_only_20260930_103021/report.json
+  - evidence/sensor_only_20260930_104350/report.json
+h_detector_max_processing_dimension_px: 640
+h_pixel_outputs_in_original_calibrated_image: true
+landing_ring_outer_diameter_m: null
+landing_ring_inner_diameter_m: 0.60
+landing_marker_size_m: [0.80, 0.80]
+h_letter_current_test_approx_dimensions_m: [0.60, 0.40]
+h_letter_dimensions_source: operator_20260930_approximate_no_width_height_axis_assignment
+h_letter_competition_dimensions_known: false
+h_letter_size_used_for_ranging: false
+h_center_at_landing_region_center: true
+chessboard_measurement_20260930:
+  measured_square_m: 0.0125
+  measured_dimension: square_edge_not_diagonal
+  superseded_incorrect_square_m: 0.017
+  approximate_board_thickness_m: 0.010
+  source: operator_final_correction_12_5mm_previous_17mm_was_reading_error
+  board_heading_relative_to_body_verified: false
+  board_grid_aligned_with_body_axes_operator_confirmed: true
+  grid_alignment_source: operator_20260930
+  # An unlabeled checkerboard establishes parallel axes, not signed forward/right.
+  signed_axes_independently_verified: false
+  old_calibration_file_square_m: 0.019
+  original_intrinsics_unchanged: true
+landing_marker_count: 2
+landing_rule_merge_source: config/competition_rules.yaml
+landing_scoring_basis_confirmed: four_motor_centers_circle_vs_black_ring
+reported_motor_diagonal_m: 0.400
+motor_diagonal_source: operator_measured_20260929
+nominal_motor_circle_radius_m: 0.200
+# Nominal radius assumes both diagonals equal and their center matches the
+# landing reference; not a measured PX4-to-motor layout or error bound.
+motor_layout_relative_to_px4_verified: false
+motor_circle_center_relative_to_px4_confirmed: true
+motor_circle_center_xy_offset_flu_m: [0.0, 0.0]
+motor_circle_center_source: operator_confirmed_rectangle_center_20260930
+# The center/diagonal are confirmed; individual motor coordinates and
+# measurement uncertainty have not been independently surveyed.
+nominal_ring_radial_clearance_m: 0.100
+ring_dimension_source: operator_measured_inner_20260929
+# Survey evidence only; not a costmap clearing authorization.
+operator_clear_takeoff_volume_m: [1.2, 1.2, 1.3]
+takeoff_volume_sensor_verified: false
+landing_boundary_verified: false
+descent_enabled: false

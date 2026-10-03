@@ -1,0 +1,116 @@
+obstacle_course_mission:
+  ros__parameters:
+    control_frequency_hz: 50
+    initialization_time_s: 3.0
+    arm_timeout_s: 8.0
+    arm_retry_interval_s: 1.0
+    takeoff_height_m: 1.2
+    takeoff_tolerance_m: 0.18
+    laser_topic: "/scan"
+    safety:
+      # Do not arm until EV position/velocity and TFmini height are fused.
+      # During flight, a sustained estimator failure commands PX4 LAND.
+      estimator_timeout_s: 0.5
+      estimator_failure_grace_s: 0.8
+
+    # NED local coordinates, grouped as x, y, z. Use takeoff point as origin.
+    # Replace these coarse defaults with measured A/B/C/D field waypoints before flight.
+    mission_waypoints_flat: [
+      0.0, 0.0, -1.2,
+      1.5, 0.0, -1.2,
+      3.0, 0.5, -1.2,
+      5.0, 0.5, -1.2,
+      7.0, 0.0, -1.2,
+      9.0, 0.5, -1.2,
+      11.0, 0.0, -1.2
+    ]
+    mission_waypoint_names: [
+      "takeoff hold",
+      "A entry",
+      "A exit / B entry",
+      "B exit / C entry",
+      "C exit / D entry",
+      "D obstacle passage",
+      "D exit"
+    ]
+
+    landing:
+      x: 12.0
+      y: 0.0
+      approach_z: -1.2
+      xy_tolerance_m: 0.25
+      approach_timeout_s: 20.0
+      precision_descent_start_height_m: 1.0
+      final_land_height_m: 0.35
+      descent_speed_mps: 0.2
+      align_tolerance_m: 0.12
+      align_stable_time_s: 1.0
+      max_align_velocity_mps: 0.25
+      align_kp: 0.45
+
+    apriltag:
+      # The mission consumes a generic body-frame target pose. The onboard QR
+      # detector publishes this topic; an AprilTag adapter may use it unchanged.
+      pose_topic: "/landing_target/qr_pose"
+      landing_tag_id: 0
+      timeout_s: 1.0
+      search_timeout_s: 8.0
+      # Axis mapping from tag pose position to body-frame forward/right error.
+      # 0=x, 1=y, 2=z. Confirm signs on the actual downward camera before flight.
+      forward_axis: 0
+      right_axis: 1
+      forward_sign: 1.0
+      right_sign: 1.0
+
+    circle:
+      center_topic: "/landing_target/circle_center"
+      distance_topic: "/landing_target/distance_m"
+      valid_topic: "/landing_target/valid"
+      timeout_s: 1.0
+      search_timeout_s: 8.0
+      image_width: 1280.0
+      image_height: 720.0
+      focal_px: 875.0
+      # Pixel mapping for downward camera. Confirm signs on the actual camera.
+      forward_pixel_sign: -1.0
+      right_pixel_sign: 1.0
+
+    yolo:
+      name_topic: "/yolo/scene/name"
+      confidence_topic: "/yolo/scene/confidence"
+
+qr_target_report:
+  ros__parameters:
+    # Microdia is the downward landing/reconnaissance camera. Override this
+    # launch parameter to the D435i color stream only when deliberately using
+    # the forward camera for a ground test.
+    image_topic: "/image_raw"
+    pose_topic: "/landing_target/qr_pose"
+    valid_topic: "/landing_target/qr_valid"
+    report_topic: "/uav/cooperation/target_report"
+    fx: 875.0
+    fy: 875.0
+    forward_pixel_sign: -1.0
+    right_pixel_sign: 1.0
+    process_period_s: 0.15
+    stale_timeout_s: 0.5
+
+air_ground_coop:
+  ros__parameters:
+    report_hz: 2.0
+    frame_id: "map"
+    output_topic: "/uav/cooperation/ugv_assist"
+    qr_topic: "/uav/cooperation/target_report"
+    yolo_name_topic: "/yolo/scene/name"
+    yolo_confidence_topic: "/yolo/scene/confidence"
+    pose_topic: "/uav/state/pose"
+
+circle_landing_target:
+  ros__parameters:
+    image_topic: "/image_raw"
+    calibration_file: "/home/cfly/uav_circle_distance_orin/configs/drone_calibration_fov_stream1_corrected.json"
+    real_diameter_cm: 60.0
+    min_area_ratio: 0.01
+    hfov_deg: 0.0
+    vfov_deg: 0.0
+    process_period_s: 0.2

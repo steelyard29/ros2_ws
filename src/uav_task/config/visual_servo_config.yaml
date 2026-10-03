@@ -1,0 +1,34 @@
+# 视觉伺服控制器配置文件
+
+# PD控制器参数
+visual_servo_controller:
+  kp_x: 0.5           # X轴比例增益
+  kp_y: 0.5           # Y轴比例增益  
+  kd_x: 0.05            # X轴微分增益
+  kd_y: 0.05            # Y轴微分增益
+
+# 相机补偿参数
+camera_compensation:
+  offset_x: 0.13     # 相机X轴偏移 (米)
+  offset_y: 0.0        # 相机Y轴偏移 (米)
+  offset_z: 0.0        # 相机Z轴偏移 (米)
+
+# 控制参数
+control_parameters:
+  ema_alpha: 0.3             # 指数移动平均滤波系数
+  max_velocity_ratio: 0.5    # 最大速度比例 (相对于系统MAX_VELOCITY)
+  tolerance: 0.14            # 到达目标的容忍度 (米)
+
+# 检测参数
+detection_parameters:
+  min_confidence: 0.75        # 最小检测置信度
+  max_target_distance: 1   # 最大目标距离 (米)
+  detection_timeout_ms: 1000 # 检测超时时间 (毫秒)
+  search_velocity: 0.1       # 搜索模式下的移动速度 (米/秒)
+  target_label: "bridge"     # 追踪目标标签，可修改为任意目标
+
+waypoint_control:
+  waypoint_kp: 0.8           # 航点控制比例增益
+  waypoint_kd: 0.2           # 航点控制微分增益
+  waypoint_max_velocity: 0.5 # 航点控制最大速度 (米/秒)
+  enable_waypoint_fallback: true  # 是否启用航点回退模式

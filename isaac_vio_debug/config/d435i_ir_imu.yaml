@@ -1,0 +1,35 @@
+/**:
+  ros__parameters:
+    # Pin the physical D435i so another RealSense device cannot be selected.
+    serial_no: "_912112073953"
+
+    # VIO input: synchronized stereo IR at a mode verified in the device dump.
+    enable_color: false
+    enable_depth: false
+    enable_infra: false
+    enable_infra1: true
+    enable_infra2: true
+    depth_module.infra_profile: "640x480x30"
+    depth_module.infra1_format: "Y8"
+    depth_module.infra2_format: "Y8"
+    depth_module.emitter_enabled: 0
+
+    # D435i motion profiles verified in the original inspection record.
+    enable_gyro: true
+    enable_accel: true
+    gyro_fps: 200
+    accel_fps: 250
+    unite_imu_method: 2
+    angular_velocity_cov: 0.01
+    linear_accel_cov: 0.01
+
+    # Keep the first test small and deterministic.
+    enable_sync: false
+    initial_reset: false
+    pointcloud.enable: false
+    align_depth.enable: false
+    diagnostics_period: 1.0
+    publish_tf: true
+    tf_publish_rate: 0.0
+    reconnect_timeout: 6.0
+    wait_for_device_timeout: 10.0

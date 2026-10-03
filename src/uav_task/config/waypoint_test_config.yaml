@@ -1,0 +1,41 @@
+# 航点飞行测试配置文件
+# 针对基础测试使用相对保守的参数设置
+
+position_controller:
+  # PID控制器参数 - 调整后以增强稳定性
+  kp_x: 0.7        # X轴比例增益 (降低以获得更平滑的响应)
+  kp_y: 0.7        # Y轴比例增益
+  kp_z: 0.5        # Z轴比例增益 (保持不变)
+  
+  kd_x: 0.2       # X轴微分增益 (增加以提供更好的阻尼)
+  kd_y: 0.2       # Y轴微分增益  
+  kd_z: 0.04       # Z轴微分增益 (保持不变)
+  
+  ki_x: 0.0        # 积分增益暂时关闭
+  ki_y: 0.0        
+  ki_z: 0.0        
+  
+  # 速度限制 - 测试时使用较低速度
+  max_velocity_xy: 0.4      # 水平最大速度 0.4m/s (较慢，更安全)
+  max_velocity_z: 0.5       # 垂直最大速度 0.5m/s
+  
+  # 滤波和精度参数
+  derivative_filter_alpha: 0.8    # 微分滤波系数
+  position_tolerance: 0.15         # 位置容差 15cm (测试时放宽)
+
+obstacle_avoidance:
+  # 激光雷达参数 - 保持与避障配置一致
+  laser_topic: "/scan"
+  obstacle_distance_threshold: 0.9    # 障碍物距离阈值 0.9m
+  avoidance_fov_degrees: 360.0        # 避障视场角 360度 (全向)
+  avoidance_strength_gain: 0.8        # 斥力增益 
+  max_avoidance_velocity: 0.5         # 最大避障速度
+  scan_timeout_ms: 300                # 扫描超时 300ms
+  min_valid_ranges_ratio: 0.6         # 最小有效点比例
+
+# 测试特定参数
+test_parameters:
+  takeoff_height: 1.0                 # 起飞高度 1米
+  waypoint_hover_time: 5.0            # 每个航点悬停时间 2秒
+  landing_timeout: 10.0               # 降落超时 30秒
+  emergency_timeout: 5.0             # 紧急状态超时 10秒

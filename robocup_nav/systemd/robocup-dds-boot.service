@@ -1,0 +1,16 @@
+[Unit]
+Description=RoboCup PX4 serial DDS Agent only, no flight or EV publisher
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=/dev/ttyTHS1
+
+[Service]
+Type=simple
+User=cfly
+WorkingDirectory=/home/cfly/ros2_ws/robocup_nav
+ExecStart=/usr/bin/python3 /home/cfly/ros2_ws/robocup_nav/scripts/boot_dds_agent.py --execute
+TimeoutStopSec=5
+Restart=no
+
+[Install]
+WantedBy=multi-user.target

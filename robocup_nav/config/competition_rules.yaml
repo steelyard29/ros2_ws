@@ -1,0 +1,95 @@
+# User-selected MERGE, 2026-09-29. Specification only; no live parameter update.
+schema_version: 1
+runtime_enabled: false
+# Latest operator priority; this is NOT the route/order flown in a competition sortie.
+development_order: [obstacle_and_h_landing, gates, parcel_delivery, full_competition]
+# Specification only, not a runtime supervisor or scoring oracle.
+operation:
+  max_sortie_s: 600
+  no_takeoff_when_remaining_less_than_s: 180
+  referee_takeoff_deadline_s: 30
+  computer_control_after_takeoff_application_allowed: false
+  emergency_takeover_terminates_attempt: true
+  resume_after_takeover_allowed: false
+takeoff_scoring:
+  ground_height_must_exceed_m: 1.0
+  stable_duration_rule_s: 10.0
+  height_reference_interpretation_confirmed_by_referee: false
+  competition_candidate:
+    operator_confirmed_as_candidate: true
+    px4_center_agl_m: 1.30
+    stable_duration_s: 12.0
+    unloaded_lower_envelope_m: 0.15
+    loaded_geometry_verified: false
+    site_clearance_verified: false
+    runtime_enabled: false
+  commissioning_profile:
+    px4_center_agl_m: 1.0
+    ground_px4_center_agl_m: 0.14
+    relative_climb_m: 0.86
+    stable_duration_s: 3.0
+    qualifies_as_competition_takeoff_evidence: false
+sources:
+  geometry: /home/cfly/无人机识别与快递运输实物赛项规则解析.pdf
+  delivery_and_landing_score: /home/cfly/2026比赛规则.pdf
+  precedence: operator_confirmed_per_section
+field:
+  size_m: [10.0, 8.0, 4.0]
+  task_area_size_m: [8.0, 8.0]
+  altitude_limit_m: 4.0
+  registered_to_odom: false
+obstacles:
+  online_horizontal_avoidance_required: true
+  collision_free_required_for_avoidance_score: true
+  overflight_qualifies_for_avoidance_score: false
+  height_range_m: [1.0, 3.0]
+  positions_and_heights_assigned_on_site: true
+  cylindrical_diameter_max_m: 0.30
+  reported_area_range_m2: [2.0, 4.0]
+  area_applicability_confirmed: false
+corridor:
+  width_m: 1.5
+  gate_count: 2
+  gate_width_m: 0.8
+  gate_positions_adjustable: true
+  altitude_limit_m: 1.5
+  overhead_net: true
+landing:
+  marker_count: 2
+  marker_size_m: [0.8, 0.8]
+  ring_inner_diameter_m: 0.6
+  ring_inner_diameter_source: operator_confirmed_physical_marker
+  ring_outer_diameter_m: null
+  scoring_geometry: four_motor_centers_circle
+  points: {inside: 10, touching_ring: 5, outside: 0}
+  reference_edge_offsets_m:
+    task_marker: {bottom: 4.0, right: 0.7}
+    tunnel_marker: {top: 0.7, right: 0.75}
+  edge_offsets_registered_to_odom: false
+delivery:
+  standard_zone_count: 4
+  standard_zone_size_m: [1.0, 1.0]
+  random_red_cross_count: 1
+  red_cross_zone_size_m: [0.35, 0.35]
+  standard_pattern_candidates: [tent, bunker, bridge, armored_vehicle, tank]
+  weights: {tent: 1.0, bunker: 1.5, bridge: 2.0, armored_vehicle: 2.5, red_cross: 10.0}
+  tank_weight: null
+  # Original document names tank among patterns but does not assign its weight.
+  dynamic_tank_task_adopted: false
+  target_positions_known_in_advance: false
+  parcel_count: 3
+  parcel_mass_kg: 0.100
+  parcel_mass_tolerance_fraction: 0.05
+  parcel_size_from_analysis_m: [0.145, 0.085, 0.10]
+  actual_parcel_and_attachment_geometry_verified: false
+  scoring_extent: parcel_and_all_attachments_outermost_contact
+  max_base_points_per_target: 5
+  red_cross_base_points: {fully_inside: 5, touching_boundary: 2.5}
+  first_hit_without_retention_points: 1
+  first_hit_without_retention_weighted: false
+  first_hit_without_retention_max_count: 1
+physical_test_site:
+  size_m: [8.0, 5.0, 3.0]
+  box_gap_m: 1.2
+  nose_to_nearest_box_m: 1.2
+  is_competition_map: false
